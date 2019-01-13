@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% for blogpost in blog: %}
+<div class="postbreak">
+    <h2>
+        <a href="{{ url_for('blog', blogid=blogpost.blog_id) }}">
+            {{ blogpost.blogtitle }}
+            </a>
+    </h2>
+    {% if blogpost.imagepath %}
+    <img src="{{ blogpost.imagepath }}" alt="{{ blogpost.blogtitle }}">
+    {% endif %}
+    <p>
+        {{ blogpost.body }}
+    </p>
+    <br>
+    <p id="author">
+        written by <a href="{{ url_for('blog', userid=blogpost.user_id) }}">
+            {{ blogpost.username }}
+    </p>
+    </div>
+{% endfor %}
+
+
+{% endblock %}
